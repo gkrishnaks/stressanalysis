@@ -10,6 +10,8 @@ Dependancies :
 1) Arduino Uno R3 - Or any other Arduino board or a clone (You may have to adjust the code!)  
 2) Arduino IDE Version 1.0  
 3) Processing IDE Version 2.1 (You may have to install the dependancies for Arduino and Processing, check out their  websites)  
+4) Strain gauge rosettes - 0,60,120 configuration
+5) Instrumentation amplifiers like INA125 or AD620
 
 
 About the programs :
