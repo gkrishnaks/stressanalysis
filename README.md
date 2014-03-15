@@ -19,6 +19,8 @@ About the programs :
 
 The differential output from each quarterbridge circuit (as the system is loaded, stress on Strain gauge changes, thereby changing its resistance) is fed into a high gain, low noise, precision amplifier like INA125 and the gain is set such that the minimum (No load) and maximum readings (for maximum load) correspond to 0 and 2.5 Volts respectively. 2.5V is the maximum because an external voltage reference of 2.5V is used at the Aref Pin of Arduino Uno for external analog voltage reference for the ADC.
 
+<b>I have attached a sample log file, you may open it with Office Spreadsheet for viewing </b>  
+
 This program performs "handshake" in Serial communication via USB for serial transmission of Data.
 setup() calls establishContact() which feeds ASCII 65 ('A') until it gets a response from a computer.
 Once response is received in the serial, loop() starts executing. The loop() function reads 3 analog inputs, converts them to voltage, then prints them to serial port as comma separated values - ONLY IF serial data is available (greater than 0), that is : the program on the computer side (Processing, in this project) sends an ASCII 65 ('A') so that lines of code with if block in loop() may execute.  
@@ -30,7 +32,6 @@ Processing reads serial data into a string until the carriage return ("\n"). The
 Data log filename : "Log dd\mm\yyyy : hh:00 - (hh+1):00.csv" in the same directory of Processing. 
 Example : "Log 14\03\2014 : 16:00 - 17.00.csv" 
 The file has individual rows timestamped at the first entry. The first row of the file has column headings.  
-<b>I have attached a sample log file, you may open it with Office Spreadsheet for viewing </b>
 
 If filename doesn't exist, file is created. Else, it is opened and appended. Since Processing has no "true" append mode for files, it has to be opened, written and closed every iteration. This data .csv log file can then be opened in a program like Live-graph (www.live-graph.org) for plotting real time dynamic graph between various  variables from data file, or it can be opened in Scientific computational softwares or Spreadsheet applications in Office suites like LibreOffice Calc or Gnumeric for post-processing.  
 <b> I have attached a sample log file in the repo </b>
