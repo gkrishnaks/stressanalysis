@@ -32,6 +32,7 @@ Example : "Log 14\03\2014 : 16:00 - 17.00.csv"
 The file has individual rows timestamped at the first entry. The first row of the file has column headings.  
 
 If filename doesn't exist, file is created. Else, it is opened and appended. Since Processing has no "true" append mode for files, it has to be opened, written and closed every iteration. This data .csv log file can then be opened in a program like Live-graph (www.live-graph.org) for plotting real time dynamic graph between various  variables from data file, or it can be opened in Scientific computational softwares or Spreadsheet applications in Office suites like LibreOffice Calc or Gnumeric for post-processing.  
+<b> I have attached a sample log file in the repo </b>
 
 Further info: 
 -------------
