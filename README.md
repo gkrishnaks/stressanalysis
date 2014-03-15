@@ -34,7 +34,8 @@ If filename doesn't exist, file is created. Else, it is opened and appended. Sin
 Further info: 
 -------------
 
-Electronic circuit diagrams and also the documentation on the Engineering topics that include reasons for selected forumlae and expressions used, will be uploaded to the same repository at a later date.
+Electronic circuit diagrams and also the documentation on the Engineering topics that include reasons for selected forumlae and expressions used, will be uploaded to the same repository at a later date, after its completion. 
+Update: I have provided reference pages and books that I used for this project in the "References.pdf" file.
 
 Contact the author : gokulakrishna@rocketmail.com
 The programs are licensed under : Apache License, Version 2.0
