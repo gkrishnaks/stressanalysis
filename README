@@ -1,14 +1,19 @@
-EXPERIMENTAL STRESS ANALYSIS WITH STRAIN GAUGES,ARDUINO UNO, AND Scientific computations and data logging with Processing.
+EXPERIMENTAL STRESS ANALYSIS WITH STRAIN GAUGES,ARDUINO UNO, AND SCIENTIFIC COMPUTATIONS WITH DATA LOGGING WITH PROCESSING.
 
 This project was developed for an academic project on Experimental Stress analysis on an Aluminium link of a 3PRR manipulator. The circut is made up of Quarterbridge threewire Wheatstone circuit with Strain gauge as one resistor. 0,60,120 Rosette configuration is used for Strain gauges so that bidirectional strain/stress measurements can be performed. 
 
+-------------
+
 Dependancies :
+
 1) Arduino Uno R3 - Or any other Arduino board or a clone (You may have to adjust the code!)
 2) Arduino IDE Version 1.0
 3) Processing IDE Version 2.1
 (You may have to install the dependancies for Arduino and Processing, check out the respective websites)
 
-About:
+-------------
+
+About the programs :
 
 The differential output from each quarterbridge circuit (as the system is loaded, stress on Strain gauge changes, thereby changing its resistance) is fed into a high gain, low noise, precision amplifier like INA125 and the gain is set such that the minimum (No load) and maximum readings (for maximum load) correspond to 0 and 2.5 Volts respectively. 2.5V is the maximum because an external voltage reference of 2.5V is used at the Aref Pin of Arduino Uno for external analog voltage reference for the ADC.
 
@@ -28,3 +33,7 @@ If filename doesn't exist, file is created. Else, it is opened and appended. Sin
 
 Electronic circuit diagrams and also the documentation on the Engineering topics that include the reason for selected forumlae and expressions used, will be uploaded to the same repository at a later date.
  
+-------------
+
+Contact the author : gokulakrishna@rocketmail.com
+License of the programs : Apache License, Version 2.0
