@@ -4,6 +4,8 @@
 
 This project was developed for an academic project on Experimental Stress analysis on an Aluminium link of a 3PRR manipulator. The circut is made up of Quarterbridge threewire Wheatstone circuit with Strain gauge as one resistor. 0,60,120 Rosette configuration is used for Strain gauges so that three directional strains can be measured for bidirectional stress analysis. 
 
+<b>I have attached a sample log file, you may open it with Office Spreadsheet, or any CSV viewer, for viewing </b>  
+
 Dependancies :
 --------------
 
@@ -12,14 +14,12 @@ Dependancies :
 3) Processing IDE Version 2.1 (You may have to install the dependancies for Arduino and Processing, check out their  websites)  
 4) Strain gauge rosettes - 0,60,120 configuration  
 5) Instrumentation amplifiers like INA125 or AD620
-
+6) Using 0.1% tolerance resistors for wheatstone bridges are recommended.
 
 About the programs :
 -------------
 
 The differential output from each quarterbridge circuit (as the system is loaded, stress on Strain gauge changes, thereby changing its resistance) is fed into a high gain, low noise, precision amplifier like INA125 and the gain is set such that the minimum (No load) and maximum readings (for maximum load) correspond to 0 and 2.5 Volts respectively. 2.5V is the maximum because an external voltage reference of 2.5V is used at the Aref Pin of Arduino Uno for external analog voltage reference for the ADC.
-
-<b>I have attached a sample log file, you may open it with Office Spreadsheet for viewing </b>  
 
 This program performs "handshake" in Serial communication via USB for serial transmission of Data.
 setup() calls establishContact() which feeds ASCII 65 ('A') until it gets a response from a computer.
