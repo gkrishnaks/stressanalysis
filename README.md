@@ -1,4 +1,4 @@
-EXPERIMENTAL STRESS ANALYSIS (IN REAL TIME)
+(REAL TIME) EXPERIMENTAL STRESS ANALYSIS 
 --------------
 <B>WITH STRAIN GAUGES,ARDUINO UNO, AND SCIENTIFIC COMPUTATIONS/DATA LOGGING WITH PROCESSING </b>
 
@@ -39,5 +39,5 @@ Further info:
 Electronic circuit diagrams and also the documentation on the Engineering topics that include reasons for selected forumlae and expressions used, will be uploaded to the same repository at a later date, after its completion. 
 Update: I have provided reference pages and books that I used for this project in the "References.pdf" file.
 
-Contact the author : gokulakrishna@rocketmail.com
+Contact the author : gokulakrishna@rocketmail.com, www.twitter.com/gkrishnaks
 The programs are licensed under : Apache License, Version 2.0
