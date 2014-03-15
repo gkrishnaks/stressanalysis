@@ -51,18 +51,18 @@ void setup() {
 
 void draw() {
   milliTimer=millis();
-  secondsTimer=milliTimer/1000.00;
+  secondsTimer=milliTimer/1000.00; //Program timer to be used in timestamps for data entry in logs.
 }
 
 void serialEvent(Serial myPort) { 
   int inByte=myPort.read();
-  if(firstContact ==false)
+  if(firstContact ==false) //Initialize first contact with Arduino
   {
     if (inByte == 'A') 
     {
-      myPort.clear();
+      myPort.clear(); 
       firstContact=true;
-      myPort.write('A');
+      myPort.write('A');  //Ask Arduino for data
     }
   }
   else
@@ -72,42 +72,42 @@ void serialEvent(Serial myPort) {
      myString = trim(myString);
      // split the string at the commas
     // and convert the sections into integers:
-    //First value sent in is Vref for any future use with it, so take from second value in calculation , i.e [1] array element, which is actually the first strain gauge output.
-    // This convention is used to reduce confusion in debugging. [1] means first gauge, or first strain/stress, not zeroth.
-    float sensors[] = float(split(myString, ','));
+    //First value sent in is Vref for any future use with it, so it takes second value in calculation , i.e [1] array element, which is actually the first strain gauge output.
+
+    float sensors[] = float(split(myString, ','));  //Split string at comma and save to float array
    
     float[] threeStrain={0,0,0,0,0}; //extra space for any future use, three strain means strain as measured in 3 directions by each of the Strain gauge in 0,60,120 configuration
-    double[] twoStrain={0,0,0,0,0}; //two strain means reduced strain values in 2 axial directions
-    float offset=0; //Change later
+    double[] twoStrain={0,0,0,0,0}; //two strain means reduced strain values in 2 Principal axes
+    float offset=0; //Change during experiment
       print( "\t" + " Next iteration " + "\n"); 
 
    for (int sensorNum = 1; sensorNum < sensors.length; sensorNum++) {
       print("Sensor " + sensorNum + ": " + sensors[sensorNum] + "\t"); //for debugging purpose. 
     } println();
-    float[] vRatio={0,0,0,0,0}; //first data, plus 3 needed data, plus extra for future use
-    double[] stress={0,0,0,0,0}; //2 axial stresses, plus extra space for future use, double for higher precision
+    float[] vRatio={0,0,0,0,0}; //Voltage ratio of (Voltage strained - Voltage unstrained) divided by bridge excitation voltage.
+    double[] stress={0,0,0,0,0}; //2 Principal stresses, plus extra space for future use, double for higher precision
     double vonMisesStress; 
-    //Calculating 3 directional strains
+
     float n,d; // n - numerator, d - denominator : For readability of formulae. 
     float leadResistance=1; //change during operation by measurement, in ohms
     float gageResistance=120; //Strain gauge resistance in ohms
    float gageFactor=2; //For strain gauge, from manufacturer's datasheet - 2 with less than 1% variation. 
- //  int[] sign={0,-1,-1,-1,-1};  //zeroth value is 1, as per the convention taken above for arrays. For easy understanding, [1] corresponds to first item, not second item.
-    /* For output mV sign positive or negative. Very important to determine compressive or tensile. 
-    If compressive, output from bridge is positive due to reduction in resistance of strian gauge, the strain is taken to be negative.
-    So the output voltage is multiplied by -1. Else, multiplied by +1. Refer the link on reference section to understand this better */
-    
-  //Change values of sign to +1 or -1 as per output during experimentation with 0,60,120 strain gauge rosettes.
-    for(int y=1;y<sensors.length;y++)
+
+ 
+//CALCULATE THREE PRINCIPAL STRAINS
+
+  for(int y=1;y<sensors.length;y++)
      {
-       vRatio[y]=(sensors[y] - offset)/4.72; //Output minus offset whole divided by supply, CHANGE SUPPLY
+       vRatio[y]=(sensors[y] - offset)/10; //Output minus offset whole divided by supply, bridge excitation voltage is 10V.
        n=4*vRatio[y]*(1+leadResistance/gageResistance); 
        d=(gageFactor*(1+2*vRatio[y])); 
        threeStrain[y]=n/d;    
         print("Directional Strain " + y +" = " + threeStrain[y] + "\t");      
      } 
      println();
-     //Calculate 2 axial strains
+
+//CALCULATE STRAIN IN TWO PRINCIPAL AXES
+
     for(int z=1;z<3;z++)
     {
       twoStrain[z]= (threeStrain[1]+threeStrain[2]+threeStrain[3])/3;
@@ -137,14 +137,15 @@ void serialEvent(Serial myPort) {
         print("Principal Strain " + z + " = " + twoStrain[z] + "\t");
     }
     println();
-     //Calculate 2 axial stresses 
-   //Poisson ratio of Aluminium = 0.33
-    // Young's modulus of Aluminium = 70 * 10^9 Pascals  
+
+
+//CALCULATE STRESS IN TWO PRINCIPAL AXES
+
     double youngsModulus;
     youngsModulus=java.lang.Math.pow(10.0,9.0); 
-    youngsModulus=70.00*youngsModulus; 
+    youngsModulus=70.00*youngsModulus;       // Young's modulus of Aluminium = 70 * 10^9 Pascals  
     double term1; //First term of the product in equation
-    float poissonRatio=0.33;
+    float poissonRatio=0.33;     //Poisson ratio of Aluminium = 0.33
     double muSquared=poissonRatio*poissonRatio;  //Poisson ratio is called mu, so - muSquared
     term1=youngsModulus/(1-muSquared); 
           stress[1]=term1*(twoStrain[1]+(poissonRatio*twoStrain[2]));
@@ -159,14 +160,15 @@ void serialEvent(Serial myPort) {
           vonMisesStress=java.lang.Math.sqrt(vonMisesStress); // square root of (double vonMisesStress);
           print("vonMises Stress = " + vonMisesStress + "\t"); 
           println();
-   //To measure angle - how much is the straingauge grid 1 (which is the strain gauge at 0 degrees) away from one Principal axis - in degrees. Strainguage at 0 degress, some initial theta is called grid 1
+
+//TO MEASURE ANGLES  (how much straingauge grid 1 (strain gauge at 0 degrees)is away from one Principal axis, in degrees) 
             float strainSum; 
          strainSum=threeStrain[2]+threeStrain[3];
          strainSum=strainSum/2;
          String angle=" "; 
          int check=1; //To know if first two if blocks are executed or not.
          String direction; //Save Clockwise or anticlockwise.  clockwise if (negative result) and anticlockwise if (positive result)
-         //String angle;
+
          if((threeStrain[1]==strainSum) && (threeStrain[2]<threeStrain[1]))
     {
       //println("Above value is theta P in MINUS forty five degrees i.e in clockwise direction");
@@ -231,6 +233,8 @@ void serialEvent(Serial myPort) {
      }  
     print("More info on the angle above : "+ angle + "\t");
     println();
+
+//CALCULATE SHEAR STRAIN AND SHEAR STRESS
      double shearStrain=0;
      double shearStress=0;
      shearStrain=twoStrain[1]-twoStrain[2];
@@ -245,6 +249,9 @@ void serialEvent(Serial myPort) {
       else //Will not happen in actual experimental stress analysis with safeloads, unless you do destructive testing to find when material yields
       {  vonMisesCriterion="Failure";} 
      print("vonMises Criterion check : " + vonMisesCriterion + "\n"); 
+
+//WRITE TO FILE
+
   // For filename with format : day\month\year:hour (in 24 hour format) , nf function returns a number in string format.
    String timestamp = "Log : " + nf(day(),2) + "\\"  + nf(month(),2) + "\\" + year() + " : " + nf(hour(),2) + ":00"+ " - "+nf(hour()+1,2) + ":00 "; 
   // First column for datalog is to be system time at which the recording was made. 
