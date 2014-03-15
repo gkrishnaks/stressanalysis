@@ -1,5 +1,5 @@
 EXPERIMENTAL STRESS ANALYSIS WITH STRAIN GAUGES,ARDUINO UNO, AND SCIENTIFIC COMPUTATIONS WITH DATA LOGGING WITH PROCESSING.
-==============
+--------------
 
 This project was developed for an academic project on Experimental Stress analysis on an Aluminium link of a 3PRR manipulator. The circut is made up of Quarterbridge threewire Wheatstone circuit with Strain gauge as one resistor. 0,60,120 Rosette configuration is used for Strain gauges so that bidirectional strain/stress measurements can be performed. 
 
