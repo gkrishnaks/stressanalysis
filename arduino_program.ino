@@ -32,6 +32,7 @@ The corresponding Processing program for this project, which is to perform seria
 
 Electronic circuit diagrams and also the documentation on the Engineering topics that include the reason for selected forumlae and expressions used, will be uploaded to the same repository at a later date.
  
+If you are new to Arduino IDE, setup() executes once, and then loop() executes itself till the board is powered down.
 */
  
 int gauge[] = {0,0,0,0};   
@@ -70,6 +71,7 @@ void loop()
           sgVoltage[k]=sgVoltage[k]/inAmp[k];
           sgVoltage[k]=sgVoltage[k]-offset[k];
         }
+        //Write values separated with a comma
     Serial.print(vRef);  
     Serial.print(",");   
     Serial.print(sgVoltage[1]); 
