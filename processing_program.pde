@@ -33,6 +33,8 @@ The file has individual rows timestamped at the first entry. The first row of th
 If filename doesn't exist, file is created. Else, it is opened and appended. Since Processing has no "true" append mode for files, it has to be opened, written and closed every iteration. This data .csv log file can then be opened in a program like Live-graph (www.live-graph.org) for plotting real time dynamic graph between various  variables from data file, or it can be opened in Scientific computational softwares or Spreadsheet applications in Office suites like LibreOffice Calc or Gnumeric for post-processing.  
 
 The circuit diagram and also the documentation on engineering topics and explanation on selection of formulae and expressions will be added to the repository at a later date.
+
+If you are new to Processing IDE, setup() executes once, draw() executes itself continuously until the stop button is pressedm SerialEvent() executes when some data is available at the serial port.
 */
 
 import processing.serial.*;     
