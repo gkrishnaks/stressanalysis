@@ -48,7 +48,7 @@ float secondsTimer=0;
 void setup() {
      myPort = new Serial(this, Serial.list()[0], 115200);
      myPort.bufferUntil('\n'); // List all serial ports by println(Serial.list()) if port is not detected.
-   // println(Serial.list());// delay(1000); //to make timer in seconds start from 1. That is, millis()/1000 is to be more than 1, So deliberate delay has been added. 
+   // println(Serial.list());// delay(1000); //to make timer in seconds start from 1. That is, millis()/1000 is to be more than 1, So deliberate delay can be been added. 
 }
 
 void draw() {
@@ -74,7 +74,7 @@ void serialEvent(Serial myPort) {
      myString = trim(myString);
      // split the string at the commas
     // and convert the sections into integers:
-    //First value sent in is Vref for any future use with it, so it takes second value in calculation , i.e [1] array element, which is actually the first strain gauge output.
+    //First value sent in is Vref for any future use with it.
 
     float sensors[] = float(split(myString, ','));  //Split string at comma and save to float array
    
@@ -90,7 +90,7 @@ void serialEvent(Serial myPort) {
     double[] stress={0,0,0,0,0}; //2 Principal stresses, plus extra space for future use, double for higher precision
     double vonMisesStress; 
 
-    float n,d; // n - numerator, d - denominator : For readability of formulae. 
+    float n,d; // n - numerator, d - denominator : For readability of formula. 
     float leadResistance=1; //change during operation by measurement, in ohms
     float gageResistance=120; //Strain gauge resistance in ohms
    float gageFactor=2; //For strain gauge, from manufacturer's datasheet - 2 with less than 1% variation. 
@@ -137,8 +137,9 @@ void serialEvent(Serial myPort) {
           twoStrain[z]=twoStrain[z]-sqRoot; //Subtract to get Principal strain in Q direction
         }
         print("Principal Strain " + z + " = " + twoStrain[z] + "\t");
+            println();
+
     }
-    println();
 
 
 //CALCULATE STRESS IN TWO PRINCIPAL AXES
