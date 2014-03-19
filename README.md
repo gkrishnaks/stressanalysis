@@ -14,7 +14,7 @@ Dependancies :
 3) Processing IDE Version 2.1 (You may have to install the dependancies for Arduino and Processing, check out their  websites)  
 4) Strain gauge rosettes - 0,60,120 configuration  
 5) Instrumentation amplifiers like INA125 or AD620  
-6) Using 0.1% tolerance (or better) resistors for wheatstone bridges are recommended for wheatstone quarter bridges for each of the three strain gauges in one 0,60,120 rosette.  Also make sure the temperature co-efficient of resistance is low so that the resistor won't heat up much on usage and lose the bridge stability.
+6) Using 0.1% tolerance (or better) resistors are recommended for wheatstone quarter bridges for each of the three strain gauges in one 0,60,120 rosette.  Also make sure the temperature co-efficient of resistance is low so that the resistor won't heat up much on usage and lose the bridge stability.  
 
 About the programs :
 -------------
