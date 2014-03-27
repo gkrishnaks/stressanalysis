@@ -27,7 +27,7 @@ Terminology used in this program:
    Therefore strain[1] means first strain, not the second. strain[0] is set to have 0 and is ignored in calculations.
 
 Data log filename : "Log dd\mm\yyyy : hh:00 - (hh+1):00.csv" in the same directory of Processing. 
-Example : "Log 14\03\2014 : 16:00 - 17.00.csv" 
+Example : "Log 14\03\2014 : 16:00 - 17.00.csv".
 The file has individual rows timestamped at the first entry. The first row of the file has column headings.
  
 If filename doesn't exist, file is created. Else, it is opened and appended. Since Processing has no "true" append mode for files, it has to be opened, written and closed every iteration. This data .csv log file can then be opened in a program like Live-graph (www.live-graph.org) for plotting real time dynamic graph between various  variables from data file, or it can be opened in Scientific computational softwares or Spreadsheet applications in Office suites like LibreOffice Calc or Gnumeric for post-processing.  
