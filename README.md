@@ -4,7 +4,7 @@
 
 This project was developed for an academic project on Experimental Stress analysis on an Aluminium link of a 3PRR manipulator. The circut is made up of Quarterbridge threewire Wheatstone circuit with Strain gauge as one resistor. 0,60,120 Rosette configuration is used for Strain gauges so that three directional strains can be measured for bidirectional stress analysis. 
 
-<b>I have attached a sample log file, you may open it with Office Spreadsheet, or any CSV viewer, for viewing </b>  
+<b>I have attached a sample output data-log file, you may open it with Office Spreadsheet, or any CSV viewer, for viewing </b>  
 
 Dependancies :
 --------------
@@ -21,13 +21,10 @@ About the programs :
 
 The differential output from each quarterbridge circuit (as the system is loaded, stress on Strain gauge changes, thereby changing its resistance) is fed into a high gain, low noise, precision amplifier like INA125 and the gain is set such that the minimum (No load) and maximum readings (for maximum load) correspond to 0 and 2.5 Volts respectively. 2.5V is the maximum because an external voltage reference of 2.5V is used at the Aref Pin of Arduino Uno for external analog voltage reference for the ADC.
 
-This program performs "handshake" in Serial communication via USB for serial transmission of Data.
-Arduino board sends ASCII 65 ('A') to USB port until it gets acknowledgment response from computer-side Java Processing program.
-Once acknowledgment is received in the serial, Arduino reads 3 analog inputs, converts them to voltage, then prints them to serial port as comma separated values.
+This program performs "handshake" in Serial communication via USB for serial transmission of Data. Handshaking is necessary because three data has to be sent from the board to computer, in exact required order and timing. Example : if the board were to send A-B-C;A-B-C, the computer should pick it up from A, not from B, else it becomes B-C-A;B-C-A. And also, the 3 data should be 'read' and sent over only when the computer asks for it - not continuously. 
 
-Values such as Initial bridge offset, amplifier gain, external analog reference are to be changed as per the setup and demands before using this code.  
-
-Processing reads serial data into a string until the carriage return ("\n") which it expects to be last value to be read. Then it splits the string at comma ',' and stores individual values in float array for further computations. Once the scientific computations (See references file for explanation of the reduction formula set) are complete, the program writes the results to a timestamped log file in comma separated value format .csv file.  
+Arduino microcontroller board sends ASCII 65 ('A') to USB port until it gets acknowledgment response from computer-side Java Processing program. Once acknowledgment is received in the serial, Arduino reads 3 analog inputs, performs ADC, converts them back to voltage, then prints them to serial port as comma separated values. Values such as Initial bridge offset, amplifier gain, external analog reference are to be changed as per the setup and demands before using this code.  
+Processing reads serial data into a string until the carriage return ("\n") which it expects to be last value to be read. Then it splits the string at comma ',' and stores individual values in float array for further computations. Once the scientific computations (See references file for explanation of the reduction formula set) are complete, the program writes the results to a timestamped log file in comma separated value format .csv file.  And cycle restarts.
 
 Data log filename : "Log dd\mm\yyyy : hh:00 - (hh+1):00.csv" in the same directory of Processing. 
 Example : "Log 14\03\2014 : 16:00 - 17.00.csv" 
