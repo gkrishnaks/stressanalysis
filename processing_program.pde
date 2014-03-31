@@ -276,7 +276,7 @@ void serialEvent(Serial myPort) {
       output.write(angle + "," + vonMisesCriterion + "\n");  
       output.flush(); //Flush in
       output.close(); //Close
-      //public class Runtime
+      
 
       delay(50); //to set number of entries per second in data log, imposing delay/ Setting 50ms delay restricts to 11 or 12 entries per second in data log.
       myPort.write('A'); 
