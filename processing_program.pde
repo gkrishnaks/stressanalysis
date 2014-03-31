@@ -100,7 +100,7 @@ void serialEvent(Serial myPort) {
 
   for(int y=1;y<sensors.length;y++)
      {
-       vRatio[y]=(sensors[y] - offset)/10; //Output minus offset whole divided by supply, bridge excitation voltage is 10V.
+       vRatio[y]=(sensors[y] - offset)/10000; //Output minus offset whole divided by supply, bridge excitation voltage is 10V or 10000 mV.
        n=4*vRatio[y]*(1+leadResistance/gageResistance); 
        d=(gageFactor*(1+2*vRatio[y])); 
        threeStrain[y]=n/d;    
@@ -259,7 +259,7 @@ void serialEvent(Serial myPort) {
    String timestamp = "Log : " + nf(day(),2) + "\\"  + nf(month(),2) + "\\" + year() + " : " + nf(hour(),2) + ":00"+ " - "+nf(hour()+1,2) + ":00 "; 
   // First column for datalog is to be system time at which the recording was made. 
    String timestamp2= nf(hour(),2)+" : "+ nf(minute(),2) + " : " + nf(second(),2);
-     double gpa=java.lang.Math.pow(10,9); //to get output in giga pascals.
+     double mpa=java.lang.Math.pow(10,6); //to get output in mega pascals.
   try
   {
       FileWriter output = new FileWriter((timestamp + ".csv"),true); //Boolean true will append the new data, if file exists, else creates a new file and starts appending.
@@ -267,12 +267,12 @@ void serialEvent(Serial myPort) {
       if(count==1)  //For first time alone - the table HEADER column
           {
               //Heading row
-              output.write("System Time" + "," + "Running time" + "," + "Gauge0 (mV)" + "," + "Gauge60 (mV)" + "," + "Gauge120 (mV)" + "," + "Strain in Principal axis P " +"," + "Strain in Principal axis Q" + "," + "Shear strain" + "," + " Stress in Principal Axis P (Pa) " + "," + " Stress in Principal Axis Q (Pa) " + "," + "Shear stress (Pa) " + "," + " Von mises stress (Pa) " + "," + "Principal Stress in Axis P (GPa) " + "," + "Principal Stress in Axis Q (GPa) " + "," +"Shear stress (GPa)" + "," + " Von Mises Stress (Gpa) " + "," + " Angle of Strain gage grid 1 to Principal axes "+","+ "Von-Mises Criterion Failure mode (if VonMisesStress is less than Yield strength - Safe) " + "\n"); 
+              output.write("System Time" + "," + "Running time" + "," + "Gauge0 (mV)" + "," + "Gauge60 (mV)" + "," + "Gauge120 (mV)" + "," + "Strain in Principal axis P " +"," + "Strain in Principal axis Q" + "," + "Shear strain" + "," + " Stress in Principal Axis P (Pa) " + "," + " Stress in Principal Axis Q (Pa) " + "," + "Shear stress (Pa) " + "," + " Von mises stress (Pa) " + "," + "Principal Stress in Axis P (MPa) " + "," + "Principal Stress in Axis Q (MPa) " + "," +"Shear stress (MPa)" + "," + " Von Mises Stress (MPa) " + "," + " Angle of Strain gage grid 1 to Principal axes "+","+ "Von-Mises Criterion Failure mode (if VonMisesStress is less than Yield strength - Safe) " + "\n"); 
               output.flush(); //Flush in
               count=count+1; // update to ignore this block for consequent entries
           }
       //Write data starting from 2nd row (under heading row)     
-      output.write(timestamp2 + "," + secondsTimer + "," + sensors[1]+"," + sensors[2]+ "," + sensors[3] + "," + twoStrain[1] + "," + twoStrain[2] + "," +shearStrain+ "," + stress[1] + "," + stress[2] + "," +shearStress + "," + vonMisesStress + ","  + stress[1]/gpa + "," + stress[2]/gpa + "," + shearStress/gpa + ","+ vonMisesStress/gpa + ","); 
+      output.write(timestamp2 + "," + secondsTimer + "," + sensors[1]+"," + sensors[2]+ "," + sensors[3] + "," + twoStrain[1] + "," + twoStrain[2] + "," +shearStrain+ "," + stress[1] + "," + stress[2] + "," +shearStress + "," + vonMisesStress + ","  + stress[1]/mpa + "," + stress[2]/mpa + "," + shearStress/mpa + ","+ vonMisesStress/mpa + ","); 
       output.write(angle + "," + vonMisesCriterion + "\n");  
       output.flush(); //Flush in
       output.close(); //Close
