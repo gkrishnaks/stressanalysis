@@ -68,7 +68,7 @@ void loop()
     for(int k=1;k<=4;k++)
         {
           sgVoltage[k]=(gauge[k]*vRef)/1023.00; 
-          sgVoltage[k]=sgVoltage[k]/inAmp[k];
+          sgVoltage[k]=sgVoltage[k]/ampGain[k];
           sgVoltage[k]=sgVoltage[k]-offset[k];
         }
         //Write values separated with a comma
