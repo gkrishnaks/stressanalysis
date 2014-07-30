@@ -24,7 +24,7 @@ The differential output from each quarterbridge circuit (as the system is loaded
 The programs implement "handshaking" for digital communication via USB for serial transmission of 3 strain gauge outputs. Handshaking is necessary because three data has to be sent from the board to computer, in exact required order of 3 straingauge outputs, and exact timing. Example : if the board were to send A-B-C;A-B-C;A-B-C; the computer should pick it up from A, not from B, else it will be taken as B-C-A;B-C-A;B-C-A; And also, the 3 data should be 'read' and sent over only when the computer asks for it - not continuously. 
 
 Arduino microcontroller board sends ASCII 65 ('A') to USB port until it gets acknowledgment response from computer-side Java Processing program. Once acknowledgment is received in the serial, Arduino reads 3 analog inputs, performs ADC, converts them back to voltage, then prints them to serial port as comma separated values. Values such as Initial bridge offset, amplifier gain, external analog reference are to be changed as per the setup and demands before using this code.  
-Processing Java program reads serial data received, into a string until the carriage return ("\n") which it expects to be last value to be read. Then it splits the string at comma ',' and stores individual values in float array for further computations. Once the scientific computations (See references file for explanation of the reduction formula set) are complete, the program writes the results to a timestamped log file in comma separated value format .csv file.  And cycle restarts.
+Processing Java program reads serial data received, into a string until the carriage return ("\n") which it expects to be last value to be read. Then it splits the string at comma ',' and stores individual values in float array for further computations. Once the scientific computations are complete, the program writes the results to a timestamped log file in comma separated value format .csv file.  And cycle restarts.
 
 Data log filename : "Log dd\mm\yyyy : hh:00 - (hh+1):00.csv" in the same directory of Processing. 
 Example : "Log 14\03\2014 : 16:00 - 17.00.csv" 
@@ -41,3 +41,16 @@ Update: I have provided links to the reference pages and manufacturer's databook
 
 Contact the author : gokulakrishna@rocketmail.com, www.twitter.com/gkrishnaks  
 The programs are licensed under : Apache License, Version 2.0
+
+References:
+
+1) Conversion of output voltage to strain for three wire quarter-bridge circuit configuration :
+National instruments on Strain gauge configuration types: http://www.ni.com/white-
+paper/4172/en/
+2) Strain gauges :
+Vishay Micromeasurements databooks on Stress analysis : http://www.vishaypg.com/micro-
+measurements/databooks/
+3) HBM strain gauge catalog - http://www.hbm.com/en/menu/products/strain-gages-
+accessories/strain-gauge-catalog/
+4) Processing reference pages and tutorials : www.processing.org
+5) Arduino tutorials from www.opensourcehardwaregroup.com
