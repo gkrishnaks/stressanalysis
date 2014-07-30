@@ -42,15 +42,12 @@ Update: I have provided links to the reference pages and manufacturer's databook
 Contact the author : gokulakrishna@rocketmail.com, www.twitter.com/gkrishnaks  
 The programs are licensed under : Apache License, Version 2.0
 
-References:
-
+<b>References:</b>  
 1) Conversion of output voltage to strain for three wire quarter-bridge circuit configuration :
-National instruments on Strain gauge configuration types: http://www.ni.com/white-
-paper/4172/en/
-2) Strain gauges :
-Vishay Micromeasurements databooks on Stress analysis : http://www.vishaypg.com/micro-
-measurements/databooks/
-3) HBM strain gauge catalog - http://www.hbm.com/en/menu/products/strain-gages-
-accessories/strain-gauge-catalog/
-4) Processing reference pages and tutorials : www.processing.org
-5) Arduino tutorials from www.opensourcehardwaregroup.com
+National instruments on Strain gauge configuration types: http://www.ni.com/white-paper/4172/en/  
+2) Strain gauges :  
+Vishay Micromeasurements databooks on Stress analysis : http://www.vishaypg.com/micro-measurements/databooks/  
+3) HBM strain gauge catalog - http://www.hbm.com/en/menu/products/strain-gages-accessories/strain-gauge-catalog/  
+4) Processing reference pages and tutorials : www.processing.org  
+5) Arduino tutorials from www.opensourcehardwaregroup.com  
+
