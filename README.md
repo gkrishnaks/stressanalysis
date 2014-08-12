@@ -39,7 +39,7 @@ Refer full_paper.pdf for Engineering details, circuit diagrams, handshaking logi
 
 Contact the author : gokulakrishna@rocketmail.com, www.twitter.com/gkrishnaks  
 The programs are licensed under : Apache License, Version 2.0  
-The full paper is licensed under : Creative Commons CC-BY 4.0 International and it was published in IJERT June 2014 edition and can be found here : www.ijert.org/view.php?id=10457&title=experimental-stress-analysis-on-non-planar-links-of-3-prr-manipulator
+The full paper is licensed under : Creative Commons CC-BY 4.0 International, and it was published in IJERT June 2014 edition and can be found here : www.ijert.org/view.php?id=10457&title=experimental-stress-analysis-on-non-planar-links-of-3-prr-manipulator
 
 <b>References:</b>  
 1) Conversion of output voltage to strain for three wire quarter-bridge circuit configuration :
