@@ -28,7 +28,7 @@ Data log filename : "Log dd\mm\yyyy : hh:00 - (hh+1):00.csv" in the same directo
 Example : "Log 14\03\2014 : 16:00 - 17.00.csv" 
 The file has individual rows timestamped at the first entry. The first row of the file has column headings.  
 
-If filename doesn't exist, file is created. Else, it is opened and appended. Since Processing has no "true" append mode for files, it has to be opened, written and closed every iteration. This data .csv log file can then be opened in a program like Live-graph (www.live-graph.org) for plotting real time dynamic graph between various  variables from data file, or it can be opened in Scientific computational softwares or Spreadsheet applications in Office suites like LibreOffice Calc or Gnumeric for post-processing.  <b> See sample output data-log file, you may open it with Office Spreadsheet, or any CSV viewer </b>
+If filename doesn't exist, file is created. Else, it is opened and appended. Since Processing has no "true" append mode for files, it has to be opened, written and closed every iteration. This data .csv log file can then be opened in a program like Live-graph (www.live-graph.org) for plotting real time dynamic graph between various  variables from data file, or it can be opened in Scientific computational softwares like Scilab, Matlab, Octave etc via their csvimport functions, or even in Spreadsheet applications in Office suites like LibreOffice Calc or Gnumeric for post-processing.  <i> Open sample output data-log file in an Office spreadsheet application to see the output format.  </i>
 
 Further info: 
 -------------
