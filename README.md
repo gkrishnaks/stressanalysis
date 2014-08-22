@@ -34,7 +34,7 @@ Further info:
 -------------
 Refer full_paper.pdf for Engineering details, circuit diagrams, handshaking logic diagrams and other details.  
 
-Contact the author : gokulakrishna@rocketmail.com 
+Contact the author : gokulakrishna@rocketmail.com   
 The programs are licensed under : Apache License, Version 2.0  
 The full paper is licensed under : Creative Commons CC-BY 4.0 International, and it was published in IJERT June 2014 edition and can be found here : www.ijert.org/view.php?id=10457&title=experimental-stress-analysis-on-non-planar-links-of-3-prr-manipulator
 
